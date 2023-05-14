@@ -38,6 +38,7 @@ WorkWithClient::WorkWithClient(const string bazep_adr, const string ferr_adr, co
     if (!bazep) throw string("Ошибка чтения файла базы клиентов");
     allclients = string(buf);
     bazep.close();
+    if ((int)allclients.find(':') == -1) throw string("Файл базы клиентов не содержит записей нужного формата");
     ferr.open(ferr_adr_f, ios::app);
     if (!(ferr.is_open())) {
         throw string("Ошибка открытия файла для записи ошибок");
@@ -93,7 +94,7 @@ bool WorkWithClient::checID(const string newid)
         return false;
     } else {
         clientpar = "";
-        for (int i = (int)allclients.find(newid) + (int)newid.size() + 1 ; allclients[i] != '\n'; i++) {
+        for (int i = (int)allclients.find(newid) + (int)newid.size() + 1 ; allclients[i] != '\n' and allclients[i+1] != '\0'; i++) {
             clientpar += allclients[i];
         }
         return true;
