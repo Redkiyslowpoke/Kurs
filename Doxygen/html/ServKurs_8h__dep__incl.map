@@ -1,0 +1,5 @@
+<map id="ServKurs.h" name="ServKurs.h">
+<area shape="rect" id="node1" title="Заголовочный файл проекта" alt="" coords="60,5,151,32"/>
+<area shape="rect" id="node2" href="$main_8cpp.html" title="Главный модуль проекта" alt="" coords="5,80,88,107"/>
+<area shape="rect" id="node3" href="$ServKurs_8cpp.html" title="Модуль реализации класса WorkWithClient." alt="" coords="112,80,219,107"/>
+</map>
