@@ -90,14 +90,22 @@ string WorkWithClient::makesalt()
 
 bool WorkWithClient::checID(const string newid)
 {
-    if ((int)allclients.find(newid) == -1) {
-        return false;
-    } else {
-        clientpar = "";
-        for (int i = (int)allclients.find(newid) + (int)newid.size() + 1 ; allclients[i] != '\n' and allclients[i+1] != '\0'; i++) {
-            clientpar += allclients[i];
+    int poz = 0;
+    while(true) {
+        if ((int)allclients.find(newid, poz) == -1) {
+            return false;
+        } else {
+            poz =(int)allclients.find(newid) + (int)newid.size();
+            if (allclients[poz] != ':') {
+                continue;
+            }
+            clientpar = "";
+            for (int i = poz + 1 ; allclients[i] != '\n' and allclients[i+1] != '\0'; i++) {
+                clientpar += allclients[i];
+            }
+            return true;
         }
-        return true;
+
     }
 }
 
